@@ -69,9 +69,6 @@ function M.setup()
       end,
     },
   }
-
-  -- Setup which-key groups (after plugins load)
-  require('custom.keymaps.which-key').setup()
 end
 
 return M

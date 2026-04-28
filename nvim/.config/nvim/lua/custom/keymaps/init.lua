@@ -24,3 +24,6 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnos
 -- Switch buffer
 vim.keymap.set("n", "<S-h>", ":bprevious<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<S-l>", ":bnext<CR>", { noremap = true, silent = true })
+
+-- [[ Which-key Groups ]]
+require('custom.keymaps.which-key').setup()
