@@ -50,7 +50,7 @@ vim.o.completeopt = 'menuone,noselect'
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
 
--- [[ Non Kickstart options ]]
+-- [[ Custom options ]]
 -- Highlight current cursorline
 vim.o.cursorline = true
 

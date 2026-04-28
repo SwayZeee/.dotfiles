@@ -9,6 +9,14 @@ require('telescope').setup {
       },
     },
   },
+  pickers = {
+    find_files = {
+      previewer = false,
+    },
+    live_grep = {
+      previewer = false,
+    },
+  },
 }
 
 -- Enable telescope fzf native, if installed
