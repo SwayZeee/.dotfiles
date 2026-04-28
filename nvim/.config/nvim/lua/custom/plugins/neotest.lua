@@ -8,6 +8,6 @@ return {
     'nvim-neotest/nvim-nio'
   },
   config  = function ()
-    require('custom.plugins.configs.neotest')
+    require('custom.plugins.configs.neotest').setup()
   end
 }

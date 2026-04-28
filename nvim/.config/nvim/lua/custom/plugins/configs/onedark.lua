@@ -1,7 +1,15 @@
-require('onedark').setup({
-  options = {
-    style = 'cool',
-  }
-})
+-- Onedark color scheme
 
-vim.cmd.colorscheme 'onedark'
+local M = {}
+
+function M.setup()
+  require('onedark').setup({
+    options = {
+      style = 'cool',
+    }
+  })
+
+  vim.cmd.colorscheme 'onedark'
+end
+
+return M

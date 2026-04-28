@@ -1,60 +1,58 @@
--- [[ Highlight on yank ]]
--- See `:help vim.highlight.on_yank()`
-local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
-vim.api.nvim_create_autocmd('TextYankPost', {
-  callback = function()
-    vim.highlight.on_yank()
-  end,
-  group = highlight_group,
-  pattern = '*',
-})
+-- Editor options and settings
 
--- [[ Setting options ]]
--- See `:help vim.o`
+local M = {}
 
--- Set highlight on search
-vim.o.hlsearch = false
+function M.setup()
+  -- Highlight on yank
+  local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+  vim.api.nvim_create_autocmd('TextYankPost', {
+    callback = function()
+      vim.highlight.on_yank()
+    end,
+    group = highlight_group,
+    pattern = '*',
+  })
 
--- Make line numbers default
-vim.wo.number = true
-vim.wo.relativenumber = true;
+  -- Search highlighting
+  vim.o.hlsearch = false
 
--- Enable mouse mode
-vim.o.mouse = 'a'
+  -- Line numbers
+  vim.wo.number = true
+  vim.wo.relativenumber = true
 
--- Sync clipboard between OS and Neovim.
---  Remove this option if you want your OS clipboard to remain independent.
---  See `:help 'clipboard'`
-vim.o.clipboard = 'unnamedplus'
+  -- Mouse mode
+  vim.o.mouse = 'a'
 
--- Enable break indent
-vim.o.breakindent = true
+  -- Clipboard
+  vim.o.clipboard = 'unnamedplus'
 
--- Save undo history
-vim.o.undofile = true
+  -- Indentation
+  vim.o.breakindent = true
 
--- Case-insensitive searching UNLESS \C or capital in search
-vim.o.ignorecase = true
-vim.o.smartcase = true
+  -- Undo history
+  vim.o.undofile = true
 
--- Keep signcolumn on by default
-vim.wo.signcolumn = 'yes'
+  -- Case-insensitive search
+  vim.o.ignorecase = true
+  vim.o.smartcase = true
 
--- Decrease update time
-vim.o.updatetime = 250
-vim.o.timeoutlen = 300
+  -- Sign column
+  vim.wo.signcolumn = 'yes'
 
--- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noselect'
+  -- Performance
+  vim.o.updatetime = 250
+  vim.o.timeoutlen = 300
 
--- NOTE: You should make sure your terminal supports this
-vim.o.termguicolors = true
+  -- Completion
+  vim.o.completeopt = 'menuone,noselect'
 
--- [[ Custom options ]]
--- Highlight current cursorline
-vim.o.cursorline = true
+  -- Colors
+  vim.o.termguicolors = true
 
--- Split vertical window to the right
-vim.o.splitright = true
--- Split horizontal window to the bottom
-vim.o.splitbelow = true 
+  -- Cursor and splits
+  vim.o.cursorline = true
+  vim.o.splitright = true
+  vim.o.splitbelow = true
+end
+
+return M 

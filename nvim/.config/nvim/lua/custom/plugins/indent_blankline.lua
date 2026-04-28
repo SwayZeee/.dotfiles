@@ -4,6 +4,6 @@ return {
   -- Enable `lukas-reineke/indent-blankline.nvim`
   -- See `:help indent_blankline.txt`
   config = function()
-    require('custom.plugins.configs.indent_blankline')
+    require('custom.plugins.configs.indent_blankline').setup()
   end,
 }

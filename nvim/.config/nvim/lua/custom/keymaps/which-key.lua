@@ -4,7 +4,8 @@
 local M = {}
 
 function M.setup()
-  require('which-key').add({
+  vim.schedule(function()
+    require('which-key').add({
     -- Code & Search
     { '<leader>c', group = '[C]ode' },
     { '<leader>d', group = '[D]ocument' },
@@ -19,7 +20,8 @@ function M.setup()
     { '<leader>ai', desc = '[A]I: Toggle Claude Code' },
     { '<leader>as', desc = '[A]I: [S]end to Claude' },
     { '<leader>af', desc = '[A]I: [F]ocus Claude Code' },
-  })
+    })
+  end)
 end
 
 return M

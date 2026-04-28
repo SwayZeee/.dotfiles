@@ -7,6 +7,6 @@ return {
     "MunifTanjim/nui.nvim",
   },
   config = function()
-    require('custom.plugins.configs.neotree')
+    require('custom.plugins.configs.neotree').setup()
   end,
 }

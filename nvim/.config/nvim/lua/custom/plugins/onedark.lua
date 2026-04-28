@@ -3,6 +3,6 @@ return {
   'navarasu/onedark.nvim',
   priority = 1000,
   config = function()
-    require('custom.plugins.configs.onedark')
+    require('custom.plugins.configs.onedark').setup()
   end,
 }

@@ -11,6 +11,6 @@ return {
   build = ':TSUpdate',
   lazy = false,
   config = function()
-    require('custom.plugins.configs.treesitter')
+    require('custom.plugins.configs.treesitter').setup()
   end
 }
