@@ -1,48 +1,20 @@
+# Add .local/bin to PATH
+export PATH="$HOME/.local/bin:$PATH"
+
 # nvm
 export NVM_DIR="$HOME/.nvm"
-source $(brew --prefix nvm)/nvm.sh
-
-# node path
-export NODE_PATH=`which node`
+[ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ] && \. "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" # This loads nvm
+[ -s "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
 
 # jEnv
 export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
 
-# Android
-export ANDROID_HOME=$HOME/Library/Android/sdk
-export PATH=$PATH:$ANDROID_HOME/emulator
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/tools/bin
-export PATH=$PATH:$ANDROID_HOME/platform-tools
+# flutter
+export PATH=$HOME/development/flutter/bin:$PATH
+export PATH=$HOME/.gem/bin:$PATH
 
-# Flutter
-export PATH=$HOME/Development/flutter/bin:$PATH
-export PATH="$PATH":"$HOME/.pub-cache/bin"
-
-# General bin for executables
-export PATH=$PATH:$HOME/bin
-
-export PATH="/usr/local/sbin:$PATH"
-
-# GraalVM
-# export PATH=/Library/Java/JavaVirtualMachines/graalvm-ce-java17-22.3.1/Contents/Home/bin:$PATH
-
-# Localstack
-alias runlocalstack='docker run -d -p 4567-4583:4567-4583 localstack/localstack:0.10.4'
-
-# bun completions
-[ -s "/Users/patrick/.bun/_bun" ] && source "/Users/patrick/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-
-# rbenv
-eval "$(rbenv init - zsh)"
-
-# Oh My Zshrc and Powerlevel10k configuration
-
+# oh-my-zhsrc and Powerlevel10k configuration
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -157,19 +129,28 @@ source $ZSH/oh-my-zsh.sh
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/patrick/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/Users/paru/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/Users/patrick/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/patrick/miniconda3/etc/profile.d/conda.sh"
+    if [ -f "/Users/paru/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/paru/miniconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/Users/patrick/miniconda3/bin:$PATH"
+        export PATH="/Users/paru/miniconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-# aliases
-alias ls="colorls"
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/paru/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
 
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)
+
+# opencode
+export PATH=/Users/paru/.opencode/bin:$PATH

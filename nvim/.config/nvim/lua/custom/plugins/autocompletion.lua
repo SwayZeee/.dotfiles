@@ -1,18 +1,31 @@
- return {
-  -- Autocompletion
-  'hrsh7th/nvim-cmp',
+return {
+  'saghen/blink.cmp',
   dependencies = {
-    -- Snippet Engine & its associated nvim-cmp source
     'L3MON4D3/LuaSnip',
-    'saadparwaiz1/cmp_luasnip',
-
-    -- Adds LSP completion capabilities
-    'hrsh7th/cmp-nvim-lsp',
-
-    -- Adds a number of user-friendly snippets
     'rafamadriz/friendly-snippets',
   },
-  config = function ()
-    require('custom.plugins.configs.autocompletion')
-  end
+  version = '1.*',
+  opts = {
+    snippets = { preset = 'luasnip' },
+    keymap = {
+      preset = 'none',
+      ['<C-Space>'] = { 'show', 'show_documentation', 'hide_documentation' },
+      ['<C-n>'] = { 'select_next', 'fallback' },
+      ['<C-p>'] = { 'select_prev', 'fallback' },
+      ['<C-d>'] = { 'scroll_documentation_up', 'fallback' },
+      ['<C-f>'] = { 'scroll_documentation_down', 'fallback' },
+      ['<CR>'] = { 'accept', 'fallback' },
+      ['<Tab>'] = { 'snippet_forward', 'select_next', 'fallback' },
+      ['<S-Tab>'] = { 'snippet_backward', 'select_prev', 'fallback' },
+    },
+    appearance = {
+      use_nvim_cmp_as_default = true,
+    },
+    sources = {
+      default = { 'lsp', 'path', 'snippets', 'buffer' },
+    },
+    completion = {
+      accept = { auto_brackets = { enabled = true } },
+    },
+  },
 }
