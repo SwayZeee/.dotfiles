@@ -29,13 +29,14 @@ A fully modularized Neovim setup using lazy.nvim for plugin management.
 
 ## How It Works
 
-1. **init.lua** — Simple entry point that loads modules in order:
+1. **init.lua** — Simple entry point that calls setup() on all modules:
    ```lua
-   require('custom.keymaps')      # Set leader key, basic keymaps
-   require('custom.options')      # Vim settings
-   require('custom.lazy')         # Plugin manager bootstrap
-   require('custom.lsp').setup()  # LSP configuration (after plugins load)
+   require('custom.options').setup()
+   require('custom.keymaps').setup()
+   require('custom.lazy').setup()
+   require('custom.lsp').setup()
    ```
+   Note: `require('custom.keymaps')` is called first (before setup) to ensure leader key is set before plugins load.
 
 2. **lazy.lua** — Bootstraps lazy.nvim and loads all plugins from `lua/custom/plugins/`
 
@@ -97,20 +98,26 @@ Since `lua/custom/lazy.lua` has `{ import = 'custom.plugins' }`, any file in `lu
 
 ## Adding Keybindings
 
+### For core keybindings
+Add to `lua/custom/keymaps/init.lua` inside `M.setup()`:
+```lua
+vim.keymap.set('n', '<leader>xy', function() ... end, { desc = 'Description' })
+```
+
 ### For LSP keybindings
 Add to `lua/custom/lsp/init.lua` in the `on_attach` function:
 ```lua
 nmap('<leader>xy', vim.lsp.buf.some_action, 'Description')
 ```
 
-### For general keybindings
-Add to `lua/custom/keymaps/init.lua`:
+### For plugin-specific keybindings
+Add to the plugin's config file (e.g., `lua/custom/plugins/configs/neotree.lua`) inside `M.setup()`:
 ```lua
-vim.keymap.set('n', '<leader>xy', function() ... end, { desc = 'Description' })
+vim.keymap.set('n', '<leader>et', '<cmd>Neotree toggle<cr>', { desc = 'Explorer toggle' })
 ```
 
 ### For which-key groups
-Add to `lua/custom/keymaps/which-key.lua`:
+Add to `lua/custom/keymaps/which-key.lua` inside `M.setup()`:
 ```lua
 { '<leader>x', group = '[X] Group Name' }
 ```
