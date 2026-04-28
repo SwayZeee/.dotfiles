@@ -28,6 +28,10 @@ GNU Stow is a symlink farm manager that organizes configuration files into packa
 ### Prerequisites
 - GNU Stow (usually pre-installed; otherwise `brew install stow`)
 - Git
+- For Neovim: `tree-sitter` and `tree-sitter-cli` for syntax highlighting
+  ```bash
+  brew install tree-sitter tree-sitter-cli
+  ```
 
 ### Initial Setup
 

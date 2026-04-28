@@ -6,6 +6,9 @@ This is a dotfiles repository managed with GNU Stow for easy config synchronizat
 ## Key Info
 - **Location**: `/Users/paru/.dotfiles`
 - **Tool**: GNU Stow 2.4.1 (already installed)
+- **Neovim Dependencies**: 
+  - `tree-sitter` and `tree-sitter-cli` (required for treesitter syntax highlighting)
+  - Install: `brew install tree-sitter tree-sitter-cli`
 - **Git Config (local)**: 
   - Email: patrick.rueschenbaum@googlemail.com
   - Name: SwayZeee

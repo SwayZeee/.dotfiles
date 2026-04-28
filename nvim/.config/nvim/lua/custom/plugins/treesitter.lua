@@ -2,6 +2,9 @@
 return {
   'nvim-treesitter/nvim-treesitter',
   enabled = true,
+  lazy = false,
+  build = ':TSUpdate',
+  branch = 'main',
   dependencies = {
     'nvim-treesitter/nvim-treesitter-textobjects',
   },
