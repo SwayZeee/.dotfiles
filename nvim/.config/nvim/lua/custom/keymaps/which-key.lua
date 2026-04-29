@@ -15,6 +15,9 @@ function M.setup()
     { '<leader>s', group = '[S]earch' },
     { '<leader>w', group = '[W]orkspace' },
 
+    -- Neo-tree
+    { '<leader>e', group = 'Neotree [E]xplorer'},
+
     -- AI
     { '<leader>a', group = '[A]I' },
     { '<leader>ai', desc = '[A]I: Toggle Claude Code' },
